@@ -60,13 +60,26 @@ def round(currentPlayer):
 		currentPlayer.move(throw)
 		print(f"Current position: {board[currentPlayer.position].name}")
 		if board[currentPlayer.position].owner == "Bank" and board[currentPlayer.position].price != None:
-			buy = input(f"Currently owned by the bank. Would you like to buy for ${board[currentPlayer.position].price}? (y/n)")
+			buy = input(f"Currently owned by the bank. Would you like to buy for ${board[currentPlayer.position].price}? (y/n) ")
 			if buy == "y":
 				if currentPlayer.money < board[currentPlayer.position].price:
 					print("You don't have enough money")
 				else:
 					currentPlayer.money -= board[currentPlayer.position].price
 					board[currentPlayer.position].owner = currentPlayer.name
+					print(f"{currentPlayer.name} bought {board[currentPlayer.position].name}!")
+		elif board[currentPlayer.position].owner == currentPlayer.name:
+			print("Visiting your own property")
+		elif board[currentPlayer.position].owner == "Bank" and board[currentPlayer.position].price == None:
+			pass # Add function to check for "Go to jail" etc.
+		else:
+			print(f"{board[currentPlayer.position].name} is owned by {board[currentPlayer.position].owner}!")
+			rent = board[currentPlayer.position].getRent()
+			print(f"Pay ${rent} in rent!")
+			currentPlayer.money -= rent
+			for player in players:
+				if player.name == board[currentPlayer.position].owner:
+					player.money += rent
 
 if __name__ ==	"__main__":
 	setup()
