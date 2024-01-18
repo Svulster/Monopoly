@@ -26,6 +26,48 @@ def setup():
 			i = i+1
 		else:
 			print("Choose a valid player")
-						
+
+def game():
+	i = 0
+	while i < len(players):
+		print("")
+		if len(players) == 1:
+			print(f"{players[i].name} has won the game!")
+			print(f"Total bank balance: {players[i].money}")
+			print(f"Total amount of streets owned: {len(players[i].property)}")
+			break
+
+		round(players[i])
+
+		if players[i].money <= 0 and players[i].property == None:
+			print(f"{players[i].name} has gone bankrupt!")
+			players.remove(i)
+
+		i += 1
+
+		if i == len(players):
+			i = 0
+
+def round(currentPlayer):
+	print(f"Current player: {currentPlayer.name}")
+	print(f"Your current amount of money is: {currentPlayer.money}")
+	if currentPlayer.property != None:
+		pass #Add choice to buy houses or hotels.
+	diceThrow = input("Throw dice? ")
+	if diceThrow:
+		throw = twoDice()
+		print(f"Dice throw result: {throw}")
+		currentPlayer.move(throw)
+		print(f"Current position: {board[currentPlayer.position].name}")
+		if board[currentPlayer.position].owner == "Bank" and board[currentPlayer.position].price != None:
+			buy = input(f"Currently owned by the bank. Would you like to buy for ${board[currentPlayer.position].price}? (y/n)")
+			if buy == "y":
+				if currentPlayer.money < board[currentPlayer.position].price:
+					print("You don't have enough money")
+				else:
+					currentPlayer.money -= board[currentPlayer.position].price
+					board[currentPlayer.position].owner = currentPlayer.name
+
 if __name__ ==	"__main__":
 	setup()
+	game()

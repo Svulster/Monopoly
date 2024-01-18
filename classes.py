@@ -3,6 +3,7 @@ class Player():
 			self.name = name
 			self.money = 4000
 			self.position = 0
+			self.property = []
 		
 	def move(self, change):
 		for i in range(change):
