@@ -35,19 +35,3 @@ class Street():
 		
 	def updateHouseLevel(self, change):
 		self.houseLevel = self.houseLevel + change
-
-#test script
-if __name__ == "__main__":
-	testplayer = Player("Shoe")
-	testplayer.move(43)
-	print(f"Player position: {testplayer.position}")
-	print(testplayer.money)
-
-	print("")
-
-	testStreet = Street("Norrmalmstorg", 39, 8000, 120, [200, 400, 800, 1200, 1600, 2000], None)
-	print(testStreet.getRent())
-	testStreet.updateHouseLevel(4)
-	print(testStreet.getRent())
-	testStreet.updateHouseLevel(-2)
-	print(testStreet.getRent())
