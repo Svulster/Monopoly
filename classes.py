@@ -15,7 +15,7 @@ class Player():
 				self.money = self.money + 4000
 		
 class Street():
-	def __init__(self, name, position, price, housePrice, rent, mortgageValue):
+	def __init__(self, name, position, price, housePrice, rent, mortgageValue, owner, set):
 		self.name = name
 		self.price = price
 		self.housePrice = housePrice
@@ -24,7 +24,8 @@ class Street():
 		self.position = position
 		self.mortgageValue = mortgageValue
 		self.mortgaged = False
-		self.owner = "Bank"
+		self.owner = owner
+		self.set = set
 		
 	def getRent(self):
 		return self.rent[self.houseLevel]
