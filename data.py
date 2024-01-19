@@ -1,5 +1,5 @@
-streetData = [["Gå", None, None, [-4000], None],								
-			["Västerlånggatan", 1200, None, [0], None],
+streetData = [["Gå", None, None, [-4000], None, "Bank", None],								
+			["Västerlånggatan", 1200, None, [0], None, "City", ["Västerlånggatan","Hornsgatan"]],
 			["Allmänning", None, None, [0], None],
 			["Hornsgatan", 1200, None, [0], None],
 			["Inkomstskatt", None, None, [4000], None],
