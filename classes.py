@@ -7,10 +7,12 @@ class Player():
 		
 	def move(self, change):
 		for i in range(change):
-			if self.position < 40:
+			if self.position < 39:
 				self.position += 1
+				print(self.position)
 			else:
 				self.position = 0
+				print(self.position)
 			if self.position == 0:
 				self.money = self.money + 4000
 		
