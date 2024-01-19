@@ -1,9 +1,10 @@
 class Player():
 	def __init__(self, name):
 			self.name = name
-			self.money = 4000
+			self.money = 30000
 			self.position = 0
 			self.property = []
+			self.jail = False
 		
 	def move(self, change):
 		for i in range(change):
