@@ -13,7 +13,7 @@ def twoDice():
 	
 def setup():
 	for i in range(len(streetData)):
-		board.append(Street(streetData[i][0], i, streetData[i][1], streetData[i][2] ,streetData[i][3], streetData[i][4]))
+		board.append(Street(streetData[i][0], i, streetData[i][1], streetData[i][2] ,streetData[i][3], streetData[i][4], streetData[i][5], streetData[i][6]))
 	availablePlayers = ["Shoe", "Ship","Car", "Hat"]
 	i = 0
 	noPlayers = int(input("Choose number of players: "))
