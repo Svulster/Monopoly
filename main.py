@@ -1,8 +1,9 @@
-from classes import Player, Street
-from data import streetData
+from classes import Player, StreetTile, CardTile
+from data import streetData, cardTileData
 import random
+import os
 
-board = []
+board = [None] * 40
 players = []
 
 def oneDice():
@@ -13,7 +14,9 @@ def twoDice():
 	
 def setup():
 	for i in range(len(streetData)):
-		board.append(Street(streetData[i][0], i, streetData[i][1], streetData[i][2] ,streetData[i][3], streetData[i][4], streetData[i][5], streetData[i][6]))
+		board[streetData[i][1]] = StreetTile(streetData[i][0], streetData[i][1], streetData[i][2] ,streetData[i][3], streetData[i][4], streetData[i][5], streetData[i][6], streetData[i][7])
+	for i in range(len(cardTileData)):
+		board[cardTileData[i][1]] = (CardTile(cardTileData[i][0], cardTileData[i][1]))
 	availablePlayers = ["Shoe", "Ship","Car", "Hat"]
 	i = 0
 	noPlayers = int(input("Choose number of players: "))
@@ -49,6 +52,7 @@ def game():
 			i = 0
 
 def round(currentPlayer):
+	#os.system("cls")
 	print(f"Current player: {currentPlayer.name}")
 	print(f"Your current amount of money is: {currentPlayer.money}")
 	if currentPlayer.property != None:

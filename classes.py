@@ -5,20 +5,27 @@ class Player():
 			self.position = 0
 			self.property = []
 			self.jail = False
+			self.jailCounter = 0
 		
 	def move(self, change):
 		for i in range(change):
 			if self.position < 39:
 				self.position += 1
-				print(self.position)
+				#print(self.position)
 			else:
 				self.position = 0
-				print(self.position)
+				#print(self.position)
 			if self.position == 0:
 				self.money = self.money + 4000
-		
-class Street():
-	def __init__(self, name, position, price, housePrice, rent, mortgageValue, owner, set):
+
+class BoardTile():
+	def __init__(self, position, tileType) -> None:
+		self.position = position
+		self.type = tileType
+
+class StreetTile(BoardTile):
+	def __init__(self, name, position, price, housePrice, rent, mortgageValue, owner, set, ) -> None:
+		super().__init__(position, tileType = "Street")
 		self.name = name
 		self.price = price
 		self.housePrice = housePrice
@@ -35,3 +42,10 @@ class Street():
 		
 	def updateHouseLevel(self, change):
 		self.houseLevel = self.houseLevel + change
+
+class CardTile(BoardTile):
+	def __init__(self, position, tileType) -> None:
+		super().__init__(position, tileType = "CardTile")
+
+	def getCard():
+		pass
